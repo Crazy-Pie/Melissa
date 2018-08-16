@@ -4,7 +4,7 @@ t.window.height = 240
 t.window.msaa = false
 t.window.fsaa = false
 t.window.vsync = false
-t.window.fullscreen = true
+t.window.fullscreen = false
 t.window.fullscreentype = "exclusive" 
 
 end
