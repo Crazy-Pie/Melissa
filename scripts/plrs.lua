@@ -5,6 +5,7 @@ player.sp=120
 player.boost=50
 player.dir="left"
 player.moving=false
+love.graphics.setDefaultFilter("nearest", "nearest")
 player.plrsprite = love.graphics.newImage('graphics/player/plrr_strip32.png')
 local g = anim8.newGrid(32, 64, player.plrsprite:getWidth(), player.plrsprite:getHeight())
 player.sd = anim8.newAnimation(g('1-1',1), 0.2)
@@ -45,8 +46,6 @@ end
   for shape, delta in pairs(HC.collisions(plr)) do
 	   player.x=player.x+delta.x
 	   player.y=player.y+delta.y
-	   -- other:move(-delta.x/2, -delta.y/2)
-
 	end
 	
 
