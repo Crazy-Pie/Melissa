@@ -6,6 +6,8 @@ loc = require 'scripts/locations'
 camsetup = require 'scripts/camset'
 
 function love.load()
+	mres = love.graphics.getWidth()/16
+	love.window.setMode(16*mres, 9*mres, {resizable=false, vsync=false, minwidth=427, minheight=240})
 	love.graphics.setDefaultFilter("nearest", "nearest")
 	loc.testloc() --Для дебага потом поменяю чтоб меню грузило
 end
@@ -16,6 +18,8 @@ end
 
 function love.draw()
 	loc.draw()
+	love.graphics.print(love.graphics.getWidth(),100,100)
+	love.graphics.print(love.graphics.getHeight(),100,110)
 	
   cam:draw(function(l,t,w,h)
 	loc.drawWorld()
@@ -25,7 +29,7 @@ end
 
 function love.keypressed(key)
 if key == "left" then love.window.setMode(1280, 720, {resizable=false, vsync=false, minwidth=427, minheight=240}) end
-if key == "right" then love.window.setMode(640, 480, {resizable=false, vsync=false, minwidth=427, minheight=240}) end
+if key == "right" then love.window.setMode(640, 360, {resizable=false, vsync=false, minwidth=427, minheight=240}) end
 if key == "up" then love.window.setMode(1920, 1080, {resizable=false, vsync=false, minwidth=427, minheight=240}) end
 end
 
