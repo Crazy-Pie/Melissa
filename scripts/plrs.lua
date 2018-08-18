@@ -9,35 +9,85 @@ love.graphics.setDefaultFilter("nearest", "nearest")
 player.blink=5
 player.blink2=false
 player.jiggle=0
+player.upfree=true
+player.downfree=true
+player.leftfree=true
+player.rightfree=true
 
 function player.load()
 	player:head()
 	player:body()
-	plr = HC.rectangle(player.x,player.y,20,22)
+
+	plrup = HC.rectangle(player.x,player.y,10,8)
+	plrdown = HC.rectangle(player.x,player.y,10,8)
+	plrleft = HC.rectangle(player.x,player.y,8,10)
+	plrright = HC.rectangle(player.x,player.y,8,10)
 
 end
 
 function player.update(dt)
-plr:moveTo(player.x+16,player.y+50)
+
+plrup:moveTo(player.x+16,player.y+40)
+plrdown:moveTo(player.x+16,player.y+60)
+plrleft:moveTo(player.x+7,player.y+50)
+plrright:moveTo(player.x+25,player.y+50)
+
 player.currentanim:update(dt)
 player.currentanim2:update(dt)
 
-if love.keyboard.isDown("w") then player.y = player.y-(player.sp+player.boost)*dt player.moving=true player.dir="up" end
-if love.keyboard.isDown("s") then player.y = player.y+(player.sp+player.boost)*dt player.moving=true player.dir="down" end
-if love.keyboard.isDown("a") then player.x = player.x-(player.sp+player.boost)*dt player.moving=true player.dir="left" end
-if love.keyboard.isDown("d") then player.x = player.x+(player.sp+player.boost)*dt player.moving=true player.dir="right"end
-if love.keyboard.isDown("lshift") then player.boost=100 else player.boost=0 end	
+if love.keyboard.isDown("w") then 
+	player.dir="up" 
+	if player.upfree==true then 
+		player.y = player.y-(player.sp+player.boost)*dt player.moving=true 
+	end
+ end
+if love.keyboard.isDown("s") then 
+	player.dir="down" 
+	if player.downfree==true then 
+		player.y = player.y+(player.sp+player.boost)*dt player.moving=true 
+	end 
+end
+if love.keyboard.isDown("a") then 
+	player.dir="left" 
+	if player.leftfree==true then 
+		player.x = player.x-(player.sp+player.boost)*dt player.moving=true 
+	end 
+end
+if love.keyboard.isDown("d") then 
+	player.dir="right"
+	if player.rightfree==true then 
+		player.x = player.x+(player.sp+player.boost)*dt player.moving=true 
+	end 
+end
+if love.keyboard.isDown("lshift") then player.boost=50 else player.boost=0 end	
 
 function love.keyreleased(key)
    if key == "w" or key == "a" or key == "d" or key == "s" then
       player.moving=false
    end
 end
+player.upfree=true
+player.downfree=true
+player.leftfree=true
+player.rightfree=true
 
- -- check for collisions
-  for shape, delta in pairs(HC.collisions(plr)) do
-		player.x=player.x+delta.x
-		player.y=player.y+delta.y
+ --check for collisions
+  for shape, delta in pairs(HC.collisions(plrup)) do
+		player.upfree=false
+		--player.x=player.x+delta.x
+		--player.y=player.y+delta.y
+	end
+--check for collisions
+  for shape, delta in pairs(HC.collisions(plrdown)) do
+		player.downfree=false
+	end
+--check for collisions
+  for shape, delta in pairs(HC.collisions(plrleft)) do
+		player.leftfree=false
+	end
+--check for collisions
+  for shape, delta in pairs(HC.collisions(plrright)) do
+		player.rightfree=false
 	end
 
 if player.blink>0 then player.blink=player.blink-(1*dt) else player.blink2=true player.blink=math.random(1,15) end
