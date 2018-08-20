@@ -1,3 +1,4 @@
+--переменные
 player = {}
 player.x=0
 player.y=0
@@ -15,6 +16,7 @@ player.leftfree=true
 player.rightfree=true
 
 function player.load()
+
 	player:head()
 	player:body()
 
@@ -35,6 +37,7 @@ plrright:moveTo(player.x+25,player.y+50)
 player.currentanim:update(dt)
 player.currentanim2:update(dt)
 
+--движение
 if love.keyboard.isDown("w") then 
 	player.dir="up" 
 	if player.upfree==true then 
@@ -66,6 +69,8 @@ function love.keyreleased(key)
       player.moving=false
    end
 end
+
+--колижин
 player.upfree=true
 player.downfree=true
 player.leftfree=true
@@ -90,10 +95,27 @@ player.rightfree=true
 		player.rightfree=false
 	end
 
-if player.blink>0 then player.blink=player.blink-(1*dt) else player.blink2=true player.blink=math.random(1,15) end
+-- отвечает за тайминг моргания 
+if player.blink>0 then 
+	player.blink=player.blink-(1*dt) 
+else 
+	player.blink2=true player.blink=math.random(1,15) 
+end
+--отвечает за возвращения обычного спрайта после моргания
+if player.currentanim2==player.hdblink or player.currentanim2==player.hrblink or player.currentanim2==player.hlblink then 
+	if player.currentanim2:currentFrame()==4 then 
+		player.currentanim2:gotoFrame(1) player.blink2=false 
+	end 
+end 
 
-if player.currentanim2==player.hdblink or player.currentanim2==player.hrblink or player.currentanim2==player.hlblink then if player.currentanim2:currentFrame()==4 then player.currentanim2:gotoFrame(1) player.blink2=false end end 
-if player.currentanim==player.wl or player.currentanim==player.wr or player.currentanim==player.wu or player.currentanim==player.wd then if player.currentanim:currentFrame()==1 or player.currentanim:currentFrame()==3 then player.jiggle=1 else player.jiggle=0 end end 
+--чтоб башка двигалась с телом
+if player.currentanim==player.wl or player.currentanim==player.wr or player.currentanim==player.wu or player.currentanim==player.wd then 
+	if player.currentanim:currentFrame()==1 or player.currentanim:currentFrame()==3 then 
+			player.jiggle=1 
+		else 
+			player.jiggle=0 
+		end 
+	end 
 end
 
 function player.draw()
@@ -116,24 +138,23 @@ if player.moving==false then
 		
 	end
 	
-
-		---ГОЛОВА
-		if player.blink2==true then 
-			if player.dir=="left" then 		player.hlblink:draw(player.plrspritehead, player.x+3,player.y+9+player.jiggle) player.currentanim2=player.hlblink end
-			if player.dir=="right" then 	player.hrblink:draw(player.plrspritehead, player.x+5,player.y+9+player.jiggle) player.currentanim2=player.hrblink end
-			if player.dir=="up" then 		player.hu:draw(player.plrspritehead, player.x+4,player.y+9+player.jiggle) player.currentanim2=player.su end
-			if player.dir=="down" then 		player.hdblink:draw(player.plrspritehead, player.x+4,player.y+9+player.jiggle) player.currentanim2=player.hdblink end
-		end
-		if player.blink2==false then
-			if player.dir=="left" then 		player.hl:draw(player.plrspritehead, player.x+3,player.y+9+player.jiggle) player.currentanim2=player.hl end
-			if player.dir=="right" then 	player.hr:draw(player.plrspritehead, player.x+5,player.y+9+player.jiggle) player.currentanim2=player.hr end
-			if player.dir=="up" then 		player.hu:draw(player.plrspritehead, player.x+4,player.y+9+player.jiggle) player.currentanim2=player.hu end
-			if player.dir=="down" then 		player.hd:draw(player.plrspritehead, player.x+4,player.y+9+player.jiggle) player.currentanim2=player.hd end
-		end
+---ГОЛОВА
+if player.blink2==true then 
+		if player.dir=="left" then 		player.hlblink:draw(player.plrspritehead, player.x+3,player.y+9+player.jiggle) player.currentanim2=player.hlblink end
+		if player.dir=="right" then 	player.hrblink:draw(player.plrspritehead, player.x+5,player.y+9+player.jiggle) player.currentanim2=player.hrblink end
+		if player.dir=="up" then 		player.hu:draw(player.plrspritehead, player.x+4,player.y+9+player.jiggle) player.currentanim2=player.su end
+		if player.dir=="down" then 		player.hdblink:draw(player.plrspritehead, player.x+4,player.y+9+player.jiggle) player.currentanim2=player.hdblink end
+end
+if player.blink2==false then
+		if player.dir=="left" then 		player.hl:draw(player.plrspritehead, player.x+3,player.y+9+player.jiggle) player.currentanim2=player.hl end
+		if player.dir=="right" then 	player.hr:draw(player.plrspritehead, player.x+5,player.y+9+player.jiggle) player.currentanim2=player.hr end
+		if player.dir=="up" then 		player.hu:draw(player.plrspritehead, player.x+4,player.y+9+player.jiggle) player.currentanim2=player.hu end
+		if player.dir=="down" then 		player.hd:draw(player.plrspritehead, player.x+4,player.y+9+player.jiggle) player.currentanim2=player.hd end
+end
 
 
 end
-
+--загружает спрайт и анимаций головы
 function player:head()
 
 	player.plrspritehead = love.graphics.newImage('graphics/player/melissa_head.png')
@@ -147,7 +168,7 @@ function player:head()
 	player.hu = anim8.newAnimation(g2('13-13',1), 0.18)
 	player.currentanim2=player.hd
 end
-
+--загружает спрайт и анимаций тела
 function player:body()
 
 player.plrsprite = love.graphics.newImage('graphics/player/melissa_body.png')

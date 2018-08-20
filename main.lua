@@ -4,12 +4,14 @@ player = require 'scripts/plrs'
 gamera = require 'scripts/gamera'
 loc = require 'scripts/locations'
 camsetup = require 'scripts/camset'
+sti = require 'scripts/sti'
 
 function love.load()
 	mres = love.graphics.getWidth()/16
 	love.window.setMode(16*mres, 9*mres, {resizable=false, vsync=false, minwidth=427, minheight=240})
 	love.graphics.setDefaultFilter("nearest", "nearest")
 	loc.testloc() --Для дебага потом поменяю чтоб меню грузило
+	map = sti("tests/ortho.lua", { "box2d" })
 end
 
 function love.update(dt)

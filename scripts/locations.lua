@@ -4,7 +4,7 @@ function loc.mainmenu()
 end
 
 function loc.testloc()
-
+    map = sti("tests/hex.lua")
     player.load()
 	rect =  HC.rectangle(50,50,100,100)
     rect2 = HC.rectangle(300,50,100,100)
@@ -17,10 +17,13 @@ function loc.testloc()
     playercollisionshow=false
 
 function loc.drawWorld()
+
+    map:draw(0,0,3,3)
     rect:draw('line')
     rect2:draw('line')
     rect3:draw('line')
     rect4:draw('line')
+    
     player.draw()
     if playercollisionshow==true then
     plrup:draw('line')
@@ -43,6 +46,7 @@ function love.keypressed(key)
     
 
 function loc.update(dt)
+    map:update(dt)
     player.update(dt)
     camsetup.cameraUpdate()
 end
