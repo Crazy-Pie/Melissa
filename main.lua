@@ -11,7 +11,6 @@ function love.load()
 	love.window.setMode(16*mres, 9*mres, {resizable=false, vsync=false, minwidth=427, minheight=240})
 	love.graphics.setDefaultFilter("nearest", "nearest")
 	loc.testloc() --Для дебага потом поменяю чтоб меню грузило
-	map = sti("tests/ortho.lua", { "box2d" })
 end
 
 function love.update(dt)
