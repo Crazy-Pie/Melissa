@@ -16,17 +16,17 @@ function loc.testloc()
     cam:setWorld(0,0,900,900)
     playercollisionshow=false
 
-function loc.drawWorld()
-    rect:draw('line')
-    rect2:draw('line')
-    rect3:draw('line')
-    rect4:draw('line')
-    player.draw()
-    if playercollisionshow==true then
-    plrup:draw('line')
-    plrdown:draw('line')
-    plrleft:draw('line')
-    plrright:draw('line')
+    function loc.drawWorld()
+        rect:draw('line')
+        ect2:draw('line')
+        rect3:draw('line')
+        rect4:draw('line')
+        player.draw()
+        if playercollisionshow==true then
+            plrup:draw('line')
+            plrdown:draw('line')
+            plrleft:draw('line')
+            plrright:draw('line')
         end
     end
     
@@ -38,7 +38,7 @@ function love.keypressed(key)
     if key == "left" then love.window.setMode(1280, 720, {resizable=false, vsync=false, minwidth=427, minheight=240}) end
     if key == "right" then love.window.setMode(640, 360, {resizable=false, vsync=false, minwidth=427, minheight=240}) end
     if key == "up" then love.window.setMode(1920, 1080, {resizable=false, vsync=false, minwidth=427, minheight=240}) end
-    end
+end
     
     
 

@@ -20,8 +20,6 @@ local gamera = {}
 
 -- Private attributes and methods
 
-
-
 local gameraMt = {__index = gamera}
 
 local abs, min, max = math.abs, math.min, math.max
