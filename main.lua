@@ -19,19 +19,10 @@ function love.update(dt)
 end
 
 function love.draw()
-<<<<<<< HEAD
-	
-  cam:draw(function(l,t,w,h)loc.drawWorld()end)
-
-  loc.draw()
-=======
+	 cam:draw(function(l,t,w,h) loc.drawWorld() end)
+	 
 	loc.draw()
->>>>>>> parent of efcae1c... Выравнил строчки.
 	love.graphics.print(love.graphics.getWidth(),100,100)
 	love.graphics.print(love.graphics.getHeight(),100,110)
-	
-  cam:draw(function(l,t,w,h)
-	loc.drawWorld()
-	end)
 
 end
