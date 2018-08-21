@@ -29,6 +29,7 @@ end
 
 function player.update(dt)
 
+<<<<<<< HEAD
 	player.currentanim:update(dt)
 	player.currentanim2:update(dt)
 
@@ -62,9 +63,43 @@ function player.update(dt)
 		if player.rightfree==true then 
 			player.x = player.x+(player.sp+player.boost)*dt player.moving=true 
 		end 
-	end
-	if love.keyboard.isDown("lshift") then player.boost=50 else player.boost=0 end	
+=======
+plrup:moveTo(player.x+16,player.y+40)
+plrdown:moveTo(player.x+16,player.y+60)
+plrleft:moveTo(player.x+7,player.y+50)
+plrright:moveTo(player.x+25,player.y+50)
 
+player.currentanim:update(dt)
+player.currentanim2:update(dt)
+
+if love.keyboard.isDown("w") then 
+	player.dir="up" 
+	if player.upfree==true then 
+		player.y = player.y-(player.sp+player.boost)*dt player.moving=true 
+>>>>>>> parent of efcae1c... Выравнил строчки.
+	end
+ end
+if love.keyboard.isDown("s") then 
+	player.dir="down" 
+	if player.downfree==true then 
+		player.y = player.y+(player.sp+player.boost)*dt player.moving=true 
+	end 
+end
+if love.keyboard.isDown("a") then 
+	player.dir="left" 
+	if player.leftfree==true then 
+		player.x = player.x-(player.sp+player.boost)*dt player.moving=true 
+	end 
+end
+if love.keyboard.isDown("d") then 
+	player.dir="right"
+	if player.rightfree==true then 
+		player.x = player.x+(player.sp+player.boost)*dt player.moving=true 
+	end 
+end
+if love.keyboard.isDown("lshift") then player.boost=50 else player.boost=0 end	
+
+<<<<<<< HEAD
 	function love.keyreleased(key)
   		if key == "w" or key == "a" or key == "d" or key == "s" then
       		player.moving=false
@@ -86,26 +121,38 @@ function player.update(dt)
 	player.downfree=true
 	player.leftfree=true
 	player.rightfree=true
+=======
+function love.keyreleased(key)
+   if key == "w" or key == "a" or key == "d" or key == "s" then
+      player.moving=false
+   end
+end
+player.upfree=true
+player.downfree=true
+player.leftfree=true
+player.rightfree=true
+>>>>>>> parent of efcae1c... Выравнил строчки.
 
  --check for collisions
-  	for shape, delta in pairs(HC.collisions(plrup)) do
+  for shape, delta in pairs(HC.collisions(plrup)) do
 		player.upfree=false
 		--player.x=player.x+delta.x
 		--player.y=player.y+delta.y
 	end
 --check for collisions
-  	for shape, delta in pairs(HC.collisions(plrdown)) do
+  for shape, delta in pairs(HC.collisions(plrdown)) do
 		player.downfree=false
 	end
 --check for collisions
-  	for shape, delta in pairs(HC.collisions(plrleft)) do
+  for shape, delta in pairs(HC.collisions(plrleft)) do
 		player.leftfree=false
 	end
 --check for collisions
-  	for shape, delta in pairs(HC.collisions(plrright)) do
+  for shape, delta in pairs(HC.collisions(plrright)) do
 		player.rightfree=false
 	end
 
+<<<<<<< HEAD
 -- отвечает за тайминг моргания 
 	if player.blink>0 then 
 		player.blink=player.blink-(1*dt) 
@@ -133,26 +180,46 @@ function player.update(dt)
 	if player.currentanim2==player.hdblink or player.currentanim2==player.hrblink or player.currentanim2==player.hlblink then if player.currentanim2:currentFrame()==4 then player.currentanim2:gotoFrame(1) player.blink2=false end end 
 	if player.currentanim==player.wl or player.currentanim==player.wr or player.currentanim==player.wu or player.currentanim==player.wd then if player.currentanim:currentFrame()==1 or player.currentanim:currentFrame()==3 then player.jiggle=1 else player.jiggle=0 end end 
 
+=======
+if player.blink>0 then player.blink=player.blink-(1*dt) else player.blink2=true player.blink=math.random(1,15) end
+
+if player.currentanim2==player.hdblink or player.currentanim2==player.hrblink or player.currentanim2==player.hlblink then if player.currentanim2:currentFrame()==4 then player.currentanim2:gotoFrame(1) player.blink2=false end end 
+if player.currentanim==player.wl or player.currentanim==player.wr or player.currentanim==player.wu or player.currentanim==player.wd then if player.currentanim:currentFrame()==1 or player.currentanim:currentFrame()==3 then player.jiggle=1 else player.jiggle=0 end end 
+>>>>>>> parent of efcae1c... Выравнил строчки.
 end
 
 function player.draw()
 --ТЕЛО
-	if player.moving==true then 
+if player.moving==true then 
 	
+<<<<<<< HEAD
 		if player.dir=="left" then 		player.wl:draw(player.plrsprite, math.floor(player.x),math.floor(player.y)) player.currentanim=player.wl end
 		if player.dir=="right" then 	player.wr:draw(player.plrsprite, math.floor(player.x),math.floor(player.y)) player.currentanim=player.wr end
 		if player.dir=="up" then 		player.wu:draw(player.plrsprite, math.floor(player.x),math.floor(player.y)) player.currentanim=player.wu end
 		if player.dir=="down" then 		player.wd:draw(player.plrsprite, math.floor(player.x),math.floor(player.y)) player.currentanim=player.wd end
+=======
+	if player.dir=="left" then 		player.wl:draw(player.plrsprite, player.x,player.y) player.currentanim=player.wl end
+	if player.dir=="right" then 	player.wr:draw(player.plrsprite, player.x,player.y) player.currentanim=player.wr end
+	if player.dir=="up" then 		player.wu:draw(player.plrsprite, player.x,player.y) player.currentanim=player.wu end
+	if player.dir=="down" then 		player.wd:draw(player.plrsprite, player.x,player.y) player.currentanim=player.wd end
+>>>>>>> parent of efcae1c... Выравнил строчки.
 	
 	end
 
-	if player.moving==false then 
+if player.moving==false then 
 	
+<<<<<<< HEAD
 
 		if player.dir=="left" then 		player.sl:draw(player.plrsprite, math.floor(player.x),math.floor(player.y)) player.currentanim=player.sl end
 		if player.dir=="right" then 	player.sr:draw(player.plrsprite, math.floor(player.x),math.floor(player.y)) player.currentanim=player.sr end
 		if player.dir=="up" then 		player.su:draw(player.plrsprite, math.floor(player.x),math.floor(player.y)) player.currentanim=player.su end
 		if player.dir=="down" then 		player.sd:draw(player.plrsprite, math.floor(player.x),math.floor(player.y)) player.currentanim=player.sd end
+=======
+	if player.dir=="left" then 		player.sl:draw(player.plrsprite, player.x,player.y) player.currentanim=player.sl end
+	if player.dir=="right" then 	player.sr:draw(player.plrsprite, player.x,player.y) player.currentanim=player.sr end
+	if player.dir=="up" then 		player.su:draw(player.plrsprite, player.x,player.y) player.currentanim=player.su end
+	if player.dir=="down" then 		player.sd:draw(player.plrsprite, player.x,player.y) player.currentanim=player.sd end
+>>>>>>> parent of efcae1c... Выравнил строчки.
 		
 	end
 
@@ -169,6 +236,11 @@ function player.draw()
 			if player.dir=="up" then 		player.hu:draw(player.plrspritehead, player.x+4,player.y+9+player.jiggle) player.currentanim2=player.hu end
 			if player.dir=="down" then 		player.hd:draw(player.plrspritehead, player.x+4,player.y+9+player.jiggle) player.currentanim2=player.hd end
 		end
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> parent of efcae1c... Выравнил строчки.
 end
 
 --загружает спрайт и анимаций головы
@@ -188,17 +260,17 @@ end
 --загружает спрайт и анимаций тела
 function player:body()
 
-	player.plrsprite = love.graphics.newImage('graphics/player/melissa_body.png')
-	local g = anim8.newGrid(32, 64, player.plrsprite:getWidth(), player.plrsprite:getHeight())
-	player.sd = anim8.newAnimation(g('2-2',1), 0.18)
-	player.wd = anim8.newAnimation(g('1-4',1), 0.18)
-	player.su = anim8.newAnimation(g('16-16',1), 0.18)
-	player.wu = anim8.newAnimation(g('13-16',1), 0.18)
-	player.sl = anim8.newAnimation(g('10-10',1), 0.18)
-	player.wl = anim8.newAnimation(g('9-12',1), 0.18)
-	player.sr = anim8.newAnimation(g('8-8',1), 0.18)
-	player.wr = anim8.newAnimation(g('5-8',1), 0.18)
-	player.currentanim=player.sd
+player.plrsprite = love.graphics.newImage('graphics/player/melissa_body.png')
+local g = anim8.newGrid(32, 64, player.plrsprite:getWidth(), player.plrsprite:getHeight())
+player.sd = anim8.newAnimation(g('2-2',1), 0.18)
+player.wd = anim8.newAnimation(g('1-4',1), 0.18)
+player.su = anim8.newAnimation(g('16-16',1), 0.18)
+player.wu = anim8.newAnimation(g('13-16',1), 0.18)
+player.sl = anim8.newAnimation(g('10-10',1), 0.18)
+player.wl = anim8.newAnimation(g('9-12',1), 0.18)
+player.sr = anim8.newAnimation(g('8-8',1), 0.18)
+player.wr = anim8.newAnimation(g('5-8',1), 0.18)
+player.currentanim=player.sd
 end
 
 
