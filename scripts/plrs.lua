@@ -25,6 +25,7 @@ function player.load()
 	plrleft = HC.rectangle(player.x,player.y,8,10)
 	plrright = HC.rectangle(player.x,player.y,8,10)
 
+
 end
 
 function player.update(dt)
