@@ -60,8 +60,8 @@ function loc.update(dt)
     player.update(dt)
     camsetup.cameraUpdate()
 
-    player.body:setX(player.x)
-    --player.body:setY(player.y)
+    --player.body:setX(player.x)
+    player.body:setY(player.y)
 end
 
 function loc.draw()
