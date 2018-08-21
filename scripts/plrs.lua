@@ -30,8 +30,18 @@ end
 function player.update(dt)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	player.currentanim:update(dt)
 	player.currentanim2:update(dt)
+=======
+plrup:moveTo(player.x+16,player.y+40)
+plrdown:moveTo(player.x+16,player.y+60)
+plrleft:moveTo(player.x+7,player.y+50)
+plrright:moveTo(player.x+25,player.y+50)
+
+player.currentanim:update(dt)
+player.currentanim2:update(dt)
+>>>>>>> parent of e4311db... gg
 
 --движение
 	if love.keyboard.isDown("w") then 
@@ -116,6 +126,11 @@ function love.keyreleased(key)
       player.moving=false
    end
 end
+<<<<<<< HEAD
+=======
+
+--колижин
+>>>>>>> parent of e4311db... gg
 player.upfree=true
 player.downfree=true
 player.leftfree=true
@@ -176,30 +191,44 @@ function player.draw()
 if player.moving==true then 
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if player.dir=="left" then 		player.wl:draw(player.plrsprite, math.floor(player.x),math.floor(player.y)) player.currentanim=player.wl end
 		if player.dir=="right" then 	player.wr:draw(player.plrsprite, math.floor(player.x),math.floor(player.y)) player.currentanim=player.wr end
 		if player.dir=="up" then 		player.wu:draw(player.plrsprite, math.floor(player.x),math.floor(player.y)) player.currentanim=player.wu end
 		if player.dir=="down" then 		player.wd:draw(player.plrsprite, math.floor(player.x),math.floor(player.y)) player.currentanim=player.wd end
 =======
+=======
+>>>>>>> parent of e4311db... gg
 	if player.dir=="left" then 		player.wl:draw(player.plrsprite, player.x,player.y) player.currentanim=player.wl end
 	if player.dir=="right" then 	player.wr:draw(player.plrsprite, player.x,player.y) player.currentanim=player.wr end
 	if player.dir=="up" then 		player.wu:draw(player.plrsprite, player.x,player.y) player.currentanim=player.wu end
 	if player.dir=="down" then 		player.wd:draw(player.plrsprite, player.x,player.y) player.currentanim=player.wd end
+<<<<<<< HEAD
 >>>>>>> parent of efcae1c... Выравнил строчки.
+=======
+>>>>>>> parent of e4311db... gg
 	
 	end
 
 if player.moving==false then 
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if player.dir=="left" then 		player.sl:draw(player.plrsprite, math.floor(player.x),math.floor(player.y)) player.currentanim=player.sl end
 		if player.dir=="right" then 	player.sr:draw(player.plrsprite, math.floor(player.x),math.floor(player.y)) player.currentanim=player.sr end
 		if player.dir=="up" then 		player.su:draw(player.plrsprite, math.floor(player.x),math.floor(player.y)) player.currentanim=player.su end
 		if player.dir=="down" then 		player.sd:draw(player.plrsprite, math.floor(player.x),math.floor(player.y)) player.currentanim=player.sd end
+=======
+	if player.dir=="left" then 		player.sl:draw(player.plrsprite, player.x,player.y) player.currentanim=player.sl end
+	if player.dir=="right" then 	player.sr:draw(player.plrsprite, player.x,player.y) player.currentanim=player.sr end
+	if player.dir=="up" then 		player.su:draw(player.plrsprite, player.x,player.y) player.currentanim=player.su end
+	if player.dir=="down" then 		player.sd:draw(player.plrsprite, player.x,player.y) player.currentanim=player.sd end
+>>>>>>> parent of e4311db... gg
 		
 	end
 	
 ---ГОЛОВА
+<<<<<<< HEAD
 	if player.blink2==true then 
 		if player.dir=="left" then 		player.hlblink:draw(player.plrspritehead, math.floor(player.x)+3,math.floor(player.y)+9+player.jiggle) player.currentanim2=player.hlblink end
 		if player.dir=="right" then 	player.hrblink:draw(player.plrspritehead, math.floor(player.x)+5,math.floor(player.y)+9+player.jiggle) player.currentanim2=player.hrblink end
@@ -234,6 +263,20 @@ if player.moving==false then
 			if player.dir=="up" then 		player.hu:draw(player.plrspritehead, player.x+4,player.y+9+player.jiggle) player.currentanim2=player.hu end
 			if player.dir=="down" then 		player.hd:draw(player.plrspritehead, player.x+4,player.y+9+player.jiggle) player.currentanim2=player.hd end
 		end
+=======
+if player.blink2==true then 
+		if player.dir=="left" then 		player.hlblink:draw(player.plrspritehead, player.x+3,player.y+9+player.jiggle) player.currentanim2=player.hlblink end
+		if player.dir=="right" then 	player.hrblink:draw(player.plrspritehead, player.x+5,player.y+9+player.jiggle) player.currentanim2=player.hrblink end
+		if player.dir=="up" then 		player.hu:draw(player.plrspritehead, player.x+4,player.y+9+player.jiggle) player.currentanim2=player.su end
+		if player.dir=="down" then 		player.hdblink:draw(player.plrspritehead, player.x+4,player.y+9+player.jiggle) player.currentanim2=player.hdblink end
+end
+if player.blink2==false then
+		if player.dir=="left" then 		player.hl:draw(player.plrspritehead, player.x+3,player.y+9+player.jiggle) player.currentanim2=player.hl end
+		if player.dir=="right" then 	player.hr:draw(player.plrspritehead, player.x+5,player.y+9+player.jiggle) player.currentanim2=player.hr end
+		if player.dir=="up" then 		player.hu:draw(player.plrspritehead, player.x+4,player.y+9+player.jiggle) player.currentanim2=player.hu end
+		if player.dir=="down" then 		player.hd:draw(player.plrspritehead, player.x+4,player.y+9+player.jiggle) player.currentanim2=player.hd end
+end
+>>>>>>> parent of e4311db... gg
 
 >>>>>>> parent of efcae1c... Выравнил строчки.
 

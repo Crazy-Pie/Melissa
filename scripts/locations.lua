@@ -4,20 +4,24 @@ function loc.mainmenu()
 end
 
 function loc.testloc()
-    map = sti("tests/test.lua")
+    map = sti("tests/hex.lua")
     player.load()
 	rect =  HC.rectangle(50,50,100,100)
     rect2 = HC.rectangle(300,50,100,100)
     rect3 = HC.rectangle(450,50,100,100)
     rect4 = HC.rectangle(450,150,100,100)
-    HC.remove(rect4)
-    player.x=600
+    player.x=200
     player.y=300
     cam = gamera.new(0,0,900,900)
     cam:setWorld(0,0,900,900)
     playercollisionshow=false
 
 function loc.drawWorld()
+<<<<<<< HEAD
+=======
+
+    map:draw(0,0,3,3)
+>>>>>>> parent of e4311db... gg
     rect:draw('line')
     rect2:draw('line')
     rect3:draw('line')
@@ -63,10 +67,6 @@ function loc.draw()
     love.graphics.print("Down: "..tostring(player.downfree), 10, 100)
     
 	love.graphics.setColor(255,255,255)
-end
-
-function loc.delete()
-
 end
 
 return loc
