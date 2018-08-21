@@ -18,12 +18,11 @@ function love.update(dt)
 end
 
 function love.draw()
-	loc.draw()
+	
+  	cam:draw(function(l,t,w,h)loc.drawWorld()end)
+
+  	loc.draw()
 	love.graphics.print(love.graphics.getWidth(),100,100)
 	love.graphics.print(love.graphics.getHeight(),100,110)
-	
-  cam:draw(function(l,t,w,h)
-	loc.drawWorld()
-	end)
 
 end
