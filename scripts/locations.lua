@@ -16,6 +16,7 @@ function loc.testloc()
     cam:setWorld(0,0,900,900)
     playercollisionshow=false
 <<<<<<< HEAD
+<<<<<<< HEAD
     function loc.drawWorld()
         rect:draw('line')
         rect2:draw('line')
@@ -28,6 +29,8 @@ function loc.testloc()
             plrleft:draw('line')
             plrright:draw('line')
 =======
+=======
+>>>>>>> parent of efcae1c... Выравнил строчки.
 
 function loc.drawWorld()
     rect:draw('line')
@@ -40,6 +43,9 @@ function loc.drawWorld()
     plrdown:draw('line')
     plrleft:draw('line')
     plrright:draw('line')
+<<<<<<< HEAD
+>>>>>>> parent of efcae1c... Выравнил строчки.
+=======
 >>>>>>> parent of efcae1c... Выравнил строчки.
         end
     end

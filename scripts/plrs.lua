@@ -30,6 +30,7 @@ end
 function player.update(dt)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	player.currentanim:update(dt)
 	player.currentanim2:update(dt)
 
@@ -64,6 +65,8 @@ function player.update(dt)
 			player.x = player.x+(player.sp+player.boost)*dt player.moving=true 
 		end 
 =======
+=======
+>>>>>>> parent of efcae1c... Выравнил строчки.
 plrup:moveTo(player.x+16,player.y+40)
 plrdown:moveTo(player.x+16,player.y+60)
 plrleft:moveTo(player.x+7,player.y+50)
@@ -76,6 +79,7 @@ if love.keyboard.isDown("w") then
 	player.dir="up" 
 	if player.upfree==true then 
 		player.y = player.y-(player.sp+player.boost)*dt player.moving=true 
+<<<<<<< HEAD
 >>>>>>> parent of efcae1c... Выравнил строчки.
 	end
  end
@@ -122,6 +126,30 @@ if love.keyboard.isDown("lshift") then player.boost=50 else player.boost=0 end
 	player.leftfree=true
 	player.rightfree=true
 =======
+=======
+	end
+ end
+if love.keyboard.isDown("s") then 
+	player.dir="down" 
+	if player.downfree==true then 
+		player.y = player.y+(player.sp+player.boost)*dt player.moving=true 
+	end 
+end
+if love.keyboard.isDown("a") then 
+	player.dir="left" 
+	if player.leftfree==true then 
+		player.x = player.x-(player.sp+player.boost)*dt player.moving=true 
+	end 
+end
+if love.keyboard.isDown("d") then 
+	player.dir="right"
+	if player.rightfree==true then 
+		player.x = player.x+(player.sp+player.boost)*dt player.moving=true 
+	end 
+end
+if love.keyboard.isDown("lshift") then player.boost=50 else player.boost=0 end	
+
+>>>>>>> parent of efcae1c... Выравнил строчки.
 function love.keyreleased(key)
    if key == "w" or key == "a" or key == "d" or key == "s" then
       player.moving=false
@@ -131,6 +159,9 @@ player.upfree=true
 player.downfree=true
 player.leftfree=true
 player.rightfree=true
+<<<<<<< HEAD
+>>>>>>> parent of efcae1c... Выравнил строчки.
+=======
 >>>>>>> parent of efcae1c... Выравнил строчки.
 
  --check for collisions
@@ -152,6 +183,7 @@ player.rightfree=true
 		player.rightfree=false
 	end
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 -- отвечает за тайминг моргания 
 	if player.blink>0 then 
@@ -186,6 +218,12 @@ if player.blink>0 then player.blink=player.blink-(1*dt) else player.blink2=true 
 if player.currentanim2==player.hdblink or player.currentanim2==player.hrblink or player.currentanim2==player.hlblink then if player.currentanim2:currentFrame()==4 then player.currentanim2:gotoFrame(1) player.blink2=false end end 
 if player.currentanim==player.wl or player.currentanim==player.wr or player.currentanim==player.wu or player.currentanim==player.wd then if player.currentanim:currentFrame()==1 or player.currentanim:currentFrame()==3 then player.jiggle=1 else player.jiggle=0 end end 
 >>>>>>> parent of efcae1c... Выравнил строчки.
+=======
+if player.blink>0 then player.blink=player.blink-(1*dt) else player.blink2=true player.blink=math.random(1,15) end
+
+if player.currentanim2==player.hdblink or player.currentanim2==player.hrblink or player.currentanim2==player.hlblink then if player.currentanim2:currentFrame()==4 then player.currentanim2:gotoFrame(1) player.blink2=false end end 
+if player.currentanim==player.wl or player.currentanim==player.wr or player.currentanim==player.wu or player.currentanim==player.wd then if player.currentanim:currentFrame()==1 or player.currentanim:currentFrame()==3 then player.jiggle=1 else player.jiggle=0 end end 
+>>>>>>> parent of efcae1c... Выравнил строчки.
 end
 
 function player.draw()
@@ -193,15 +231,21 @@ function player.draw()
 if player.moving==true then 
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if player.dir=="left" then 		player.wl:draw(player.plrsprite, math.floor(player.x),math.floor(player.y)) player.currentanim=player.wl end
 		if player.dir=="right" then 	player.wr:draw(player.plrsprite, math.floor(player.x),math.floor(player.y)) player.currentanim=player.wr end
 		if player.dir=="up" then 		player.wu:draw(player.plrsprite, math.floor(player.x),math.floor(player.y)) player.currentanim=player.wu end
 		if player.dir=="down" then 		player.wd:draw(player.plrsprite, math.floor(player.x),math.floor(player.y)) player.currentanim=player.wd end
 =======
+=======
+>>>>>>> parent of efcae1c... Выравнил строчки.
 	if player.dir=="left" then 		player.wl:draw(player.plrsprite, player.x,player.y) player.currentanim=player.wl end
 	if player.dir=="right" then 	player.wr:draw(player.plrsprite, player.x,player.y) player.currentanim=player.wr end
 	if player.dir=="up" then 		player.wu:draw(player.plrsprite, player.x,player.y) player.currentanim=player.wu end
 	if player.dir=="down" then 		player.wd:draw(player.plrsprite, player.x,player.y) player.currentanim=player.wd end
+<<<<<<< HEAD
+>>>>>>> parent of efcae1c... Выравнил строчки.
+=======
 >>>>>>> parent of efcae1c... Выравнил строчки.
 	
 	end
@@ -209,16 +253,22 @@ if player.moving==true then
 if player.moving==false then 
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 		if player.dir=="left" then 		player.sl:draw(player.plrsprite, math.floor(player.x),math.floor(player.y)) player.currentanim=player.sl end
 		if player.dir=="right" then 	player.sr:draw(player.plrsprite, math.floor(player.x),math.floor(player.y)) player.currentanim=player.sr end
 		if player.dir=="up" then 		player.su:draw(player.plrsprite, math.floor(player.x),math.floor(player.y)) player.currentanim=player.su end
 		if player.dir=="down" then 		player.sd:draw(player.plrsprite, math.floor(player.x),math.floor(player.y)) player.currentanim=player.sd end
 =======
+=======
+>>>>>>> parent of efcae1c... Выравнил строчки.
 	if player.dir=="left" then 		player.sl:draw(player.plrsprite, player.x,player.y) player.currentanim=player.sl end
 	if player.dir=="right" then 	player.sr:draw(player.plrsprite, player.x,player.y) player.currentanim=player.sr end
 	if player.dir=="up" then 		player.su:draw(player.plrsprite, player.x,player.y) player.currentanim=player.su end
 	if player.dir=="down" then 		player.sd:draw(player.plrsprite, player.x,player.y) player.currentanim=player.sd end
+<<<<<<< HEAD
+>>>>>>> parent of efcae1c... Выравнил строчки.
+=======
 >>>>>>> parent of efcae1c... Выравнил строчки.
 		
 	end
@@ -237,7 +287,11 @@ if player.moving==false then
 			if player.dir=="down" then 		player.hd:draw(player.plrspritehead, player.x+4,player.y+9+player.jiggle) player.currentanim2=player.hd end
 		end
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+
+>>>>>>> parent of efcae1c... Выравнил строчки.
 
 
 >>>>>>> parent of efcae1c... Выравнил строчки.

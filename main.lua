@@ -20,8 +20,11 @@ end
 
 function love.draw()
 <<<<<<< HEAD
+<<<<<<< HEAD
 	 cam:draw(function(l,t,w,h) loc.drawWorld() end)
 	 
+=======
+>>>>>>> parent of efcae1c... Выравнил строчки.
 =======
 >>>>>>> parent of efcae1c... Выравнил строчки.
 	loc.draw()
