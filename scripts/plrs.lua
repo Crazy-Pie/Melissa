@@ -114,10 +114,11 @@ function player.update(dt)
 --чтоб башка двигалась с телом
 		if currentanim==wl or currentanim==wr or currentanim==wu or currentanim==wd then 
 			if currentanim:currentFrame()==1 or currentanim:currentFrame()==3 then 
-					player.jiggle=1 
+					player.jiggle=-1
 				else 
-					player.jiggle=0 
+					player.jiggle=0
 				end 
+				else player.jiggle=0
 			end 
 
 end

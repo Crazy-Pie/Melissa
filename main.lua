@@ -9,6 +9,7 @@ bump_debug = require 'scripts/bump_debug'
 
 function love.load()
 	mres = love.graphics.getWidth()/16
+	love.graphics.setFont(love.graphics.newFont("stuff/PressStart2P.ttf"))
 	love.window.setMode(16*mres, 9*mres, {resizable=false, vsync=false, minwidth=427, minheight=240})
 	love.graphics.setDefaultFilter("nearest", "nearest")
 	loc.testloc() --Для дебага потом поменяю чтоб меню грузило
