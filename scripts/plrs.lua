@@ -1,7 +1,7 @@
 --переменные
 local cols_len = 0
 
-local player = {x=100,y=100,w=20,h=20,speed=100,boost=50,dir="down",moving=false,blink=5,blink2=false,jiggle=0}
+local player = {x=100,y=100,w=24,h=20,speed=100,boost=50,dir="down",moving=false,blink=5,blink2=false,jiggle=0}
 
 cols_len=0
 

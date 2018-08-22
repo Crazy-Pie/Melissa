@@ -5,12 +5,12 @@ function loc.mainmenu()
 end
 
 function loc.testloc()
-    map = sti("tests/hi.lua", { "bump" })
+    map = sti("tests/test.lua", { "bump" })
     world = bump.newWorld()
     map:bump_init(world)
     player.load()
-    cam = gamera.new(0,0,900,900)
-    cam:setWorld(0,0,900,900)
+    cam = gamera.new(0,0,1120,768)
+    cam:setWorld(0,0,1120,768)
     playercollisionshow=false
 
 function loc.drawWorld()
