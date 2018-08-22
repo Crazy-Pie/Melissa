@@ -28,6 +28,8 @@ local anim8 = {
   ]]
 }
 
+currentFrameV = {}
+
 local Grid = {}
 
 local _frames = {}
@@ -235,6 +237,11 @@ function Animation:update(dt)
   end
 
   self.position = seekFrameIndex(self.intervals, self.timer)
+  
+end
+
+function Animation:currentFrame()
+  return self.position
 end
 
 function Animation:pause()
