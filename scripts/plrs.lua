@@ -5,6 +5,24 @@ local player = {x=100,y=100,w=24,h=20,speed=100,boost=50,dir="down",moving=false
 
 cols_len=0
 
+local function loadsound()
+s1 = love.audio.newSource("audio/step1.wav", "static")
+s2 = love.audio.newSource("audio/step2.wav", "static")
+s3 = love.audio.newSource("audio/step3.wav", "static")
+s4 = love.audio.newSource("audio/step4.wav", "static")
+s5 = love.audio.newSource("audio/step5.wav", "static")
+s6 = love.audio.newSource("audio/step6.wav", "static")
+end
+
+local function footsteps()
+	if w == 1 then s1:play() end 
+	if w == 2 then s2:play() end 
+	if w == 3 then s3:play() end 
+	if w == 4 then s4:play() end 
+	if w == 5 then s5:play() end 
+	if w == 6 then s6:play() end 
+end
+
 local function updatePlayer(dt)
 
 	local speed = player.speed+player.boost
@@ -73,6 +91,7 @@ local function loadbody()
 	wl = anim8.newAnimation(g('9-12',1), 0.18)
 	sr = anim8.newAnimation(g('8-8',1), 0.18)
 	wr = anim8.newAnimation(g('5-8',1), 0.18)
+	shadow = love.graphics.newImage('graphics/genericshadow.png')
 	currentanim=sd
 end
 
@@ -80,6 +99,7 @@ function player.load()
 	world:add(player, player.x, player.y,player.w,player.h)
 	loadhead()
 	loadbody()
+	loadsound()
 	
 	for k, object in pairs(map.objects) do
 		if object.name == "SpawnPoint" then
@@ -115,8 +135,10 @@ function player.update(dt)
 		if currentanim==wl or currentanim==wr or currentanim==wu or currentanim==wd then 
 			if currentanim:currentFrame()==1 or currentanim:currentFrame()==3 then 
 					player.jiggle=-1
+					w = math.random(1,6)
 				else 
 					player.jiggle=0
+					footsteps()
 				end 
 				else player.jiggle=0
 			end 
@@ -125,10 +147,13 @@ end
 
 function player.draw()
 --ТЕЛО
+
+love.graphics.draw(shadow, math.floor(player.x),math.floor(player.y+8))
+
 if player.moving==true then 
 	
-	if player.dir=="left" then 		wl:draw(plrsprite, math.floor(player.x-5),math.floor(player.y-41)) currentanim=wl end
-	if player.dir=="right" then 	wr:draw(plrsprite, math.floor(player.x-5),math.floor(player.y-41)) currentanim=wr end
+	if player.dir=="left" then 		wl:draw(plrsprite, math.floor(player.x-3),math.floor(player.y-41)) currentanim=wl end
+	if player.dir=="right" then 	wr:draw(plrsprite, math.floor(player.x-7),math.floor(player.y-41)) currentanim=wr end
 	if player.dir=="up" then 		wu:draw(plrsprite, math.floor(player.x-5),math.floor(player.y-41)) currentanim=wu end
 	if player.dir=="down" then 		wd:draw(plrsprite, math.floor(player.x-5),math.floor(player.y-41)) currentanim=wd end
 	
@@ -136,8 +161,8 @@ if player.moving==true then
 
 if player.moving==false then 
 	
-	if player.dir=="left" then 		sl:draw(plrsprite, math.floor(player.x-5),math.floor(player.y-41)) currentanim=sl end
-	if player.dir=="right" then 	sr:draw(plrsprite, math.floor(player.x-5),math.floor(player.y-41)) currentanim=sr end
+	if player.dir=="left" then 		sl:draw(plrsprite, math.floor(player.x-3),math.floor(player.y-41)) currentanim=sl end
+	if player.dir=="right" then 	sr:draw(plrsprite, math.floor(player.x-7),math.floor(player.y-41)) currentanim=sr end
 	if player.dir=="up" then 		su:draw(plrsprite, math.floor(player.x-5),math.floor(player.y-41)) currentanim=su end
 	if player.dir=="down" then 		sd:draw(plrsprite, math.floor(player.x-5),math.floor(player.y-41)) currentanim=sd end
 		
@@ -145,14 +170,14 @@ if player.moving==false then
 	
 ---ГОЛОВА
 if player.blink2==true then 
-	if player.dir=="left" then 		hlblink:draw(plrspritehead, math.floor(player.x-5)+3,math.floor(player.y-41)+9+player.jiggle) currentanim2=hlblink end
-	if player.dir=="right" then 	hrblink:draw(plrspritehead, math.floor(player.x-5)+5,math.floor(player.y-41)+9+player.jiggle) currentanim2=hrblink end
+	if player.dir=="left" then 		hlblink:draw(plrspritehead, math.floor(player.x-3)+3,math.floor(player.y-41)+9+player.jiggle) currentanim2=hlblink end
+	if player.dir=="right" then 	hrblink:draw(plrspritehead, math.floor(player.x-7)+5,math.floor(player.y-41)+9+player.jiggle) currentanim2=hrblink end
 	if player.dir=="up" then 		hu:draw(plrspritehead, math.floor(player.x-5)+4,math.floor(player.y-41)+9+player.jiggle) currentanim2=su end
 	if player.dir=="down" then 		hdblink:draw(plrspritehead, math.floor(player.x-5)+4,math.floor(player.y-41)+9+player.jiggle) currentanim2=hdblink end
 end
 if player.blink2==false then
-	if player.dir=="left" then 		hl:draw(plrspritehead, math.floor(player.x-5)+3,math.floor(player.y-41)+9+player.jiggle) currentanim2=hl end
-	if player.dir=="right" then 	hr:draw(plrspritehead, math.floor(player.x-5)+5,math.floor(player.y-41)+9+player.jiggle) currentanim2=hr end
+	if player.dir=="left" then 		hl:draw(plrspritehead, math.floor(player.x-3)+3,math.floor(player.y-41)+9+player.jiggle) currentanim2=hl end
+	if player.dir=="right" then 	hr:draw(plrspritehead, math.floor(player.x-7)+5,math.floor(player.y-41)+9+player.jiggle) currentanim2=hr end
 	if player.dir=="up" then 		hu:draw(plrspritehead, math.floor(player.x-5)+4,math.floor(player.y-41)+9+player.jiggle) currentanim2=hu end
 	if player.dir=="down" then 		hd:draw(plrspritehead, math.floor(player.x-5)+4,math.floor(player.y-41)+9+player.jiggle) currentanim2=hd end
 end

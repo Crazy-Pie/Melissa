@@ -6,6 +6,7 @@ end
 
 function loc.testloc()
     map = sti("tests/test.lua", { "bump" })
+    mapfoward = sti("tests/testfoward.lua")
     world = bump.newWorld()
     map:bump_init(world)
     player.load()
@@ -17,6 +18,7 @@ function loc.drawWorld()
     map:draw(0,0)
     --bump_debug.draw(world)
     player.draw()
+    mapfoward:draw(0,0)
 
     end
     
